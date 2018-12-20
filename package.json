@@ -8,8 +8,8 @@
     "build:client": "webpack --config build/webpack.config.client.js",
     "build:server": "webpack --config build/webpack.config.server.js",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
-    "dev:server": "cross-env NODE_ENV=development webpack-dev-server node server/server.js",
-    "build": "npm run clear && npm run build:client && npm run build:server"
+    "dev:server": "cross-env NODE_ENV=development node server/server.js",
+    "build": "npm run clear && npm run build:client && npm run build:server",
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +29,7 @@
     "babel-preset-es2015-loose": "^8.0.0",
     "babel-preset-react": "^6.24.1",
     "cross-env": "^5.2.0",
+    "http-proxy-middleware": "^0.19.1",
     "memory-fs": "^0.4.1",
     "rimraf": "^2.6.2",
     "webpack-cli": "^3.1.2",

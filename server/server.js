@@ -4,13 +4,13 @@ const fs = require('fs')
 const path = require('path')
 
 
-// const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
 
 const app = express()
 
 
-// if(!isDev) {
+if(!isDev) {
     app.use('/public/', express.static(path.join(__dirname, '../dist')))
     const serverEntry = require('../dist/server-entry').default
     const template = fs.readFileSync(path.join(__dirname, '../dist/index.html'), 'utf8')
@@ -19,10 +19,10 @@ const app = express()
         const appString = ReactSSR.renderToString(serverEntry)
         res.send(template.replace('<!-- app -->', appString))
     })
-// } else {
-//     const devStatic = require('./util/dev-static')
-//     devStatic(app)
-// }
+} else {
+    const devStatic = require('./util/dev-static')
+    devStatic(app)
+}
 app.listen(3333, function() {
     console.log('server is listening on 3333!');
 })
